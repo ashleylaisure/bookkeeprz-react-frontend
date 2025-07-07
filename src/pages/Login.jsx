@@ -1,9 +1,9 @@
-import React from 'react'
+import Form from "../components/Form"
 
 function Login() {
     return (
         <div>
-        <h1>Login</h1>
+        <Form route="/token/" method="login"/>
         </div>
     )
 }

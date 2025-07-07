@@ -1,10 +1,11 @@
-import React from 'react'
+import Form from "../components/Form"
 
 function Register() {
     return (
         <div>
-        <h1>Register</h1>
+            <Form route="/user/register/" method="register"/>
         </div>
+        
     )
 }
 
