@@ -82,6 +82,7 @@ export default function NavBar(props) {
             </Typography>
             </Toolbar>
         </AppBar>
+        
         <Drawer
             variant="permanent"
             sx={{

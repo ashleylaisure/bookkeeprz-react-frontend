@@ -6,7 +6,7 @@ import Select from '@mui/material/Select';
 import { Controller } from 'react-hook-form';
 
 export default function SelectField(props) {
-    const {label, name, control} = props
+    const {label, name, control, width} = props
 
     return (
         <Controller
@@ -19,7 +19,7 @@ export default function SelectField(props) {
                     formState,
                 }) => (
 
-                <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
+                <FormControl variant="standard" sx={{ width:{width} }}>
                     <InputLabel id="demo-simple-select-filled-label">{label}</InputLabel>
                     <Select
                         labelId="demo-simple-select-filled-label"
