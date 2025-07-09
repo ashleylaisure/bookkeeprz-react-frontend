@@ -1,22 +1,37 @@
-import React from 'react'
+import {React, useEffect} from 'react'
 import {Box, Button, Typography } from '@mui/material'
 import TextFields from './forms/TextFields.jsx'
 import { useForm } from 'react-hook-form'
 import Axios from '../Axios.jsx'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
-const Create = () => {
+const Edit = () => {
+    const navigate = useNavigate()
+    const MyParam = useParams()
+    const MyId = MyParam.id
+
     const defaultValues = {
         title : '', 
         author: '', 
     }
-
-    const {handleSubmit, control} = useForm({defaultValues:defaultValues})
-
-    const navigate = useNavigate()
     
+    const {handleSubmit, setValue, control} = useForm({defaultValues:defaultValues})
+
+    const GetData = () => {
+        Axios.get(`book/${MyId}`).then((res) => {
+            console.log(res.data)
+            setValue('title',res.data.title)
+            setValue('author',res.data.author)
+        })
+    }
+
+    useEffect(() => {
+        GetData();
+    }, [])
+
+
     const submission = (data) => {
-        Axios.post(`book/`, {
+        Axios.put(`book/${MyId}/`, {
             title: data.title,
             author: data.author,
         })
@@ -66,7 +81,7 @@ const Create = () => {
             <Box sx={{display:'flex', justifyContent:'start', marginTop:'40px'}}> 
                 
                 <Button variant="contained" type="submit" sx={{width:'30%'}}>
-                    Submit
+                    Save
                 </Button>
             </Box>
 
@@ -76,4 +91,4 @@ const Create = () => {
     )
 }
 
-export default Create
+export default Edit

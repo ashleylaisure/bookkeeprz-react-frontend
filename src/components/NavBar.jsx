@@ -39,7 +39,16 @@ export default function NavBar(props) {
                     <ListItemIcon>
                         <DashboardIcon />
                     </ListItemIcon>
-                    <ListItemText primary={"Dashboard"} />
+                    <ListItemText primary={"Home"} />
+                    </ListItemButton>
+                </ListItem>
+
+                <ListItem disablePadding>
+                    <ListItemButton component={Link} to="/books" selected={"/books" === path}>
+                    <ListItemIcon>
+                        <DashboardIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={"My Books"} />
                     </ListItemButton>
                 </ListItem>
 
@@ -77,6 +86,7 @@ export default function NavBar(props) {
                 sx={{mr:2,display:{sm:"none"}}}>
                 <MenuIcon />
             </IconButton>
+            
             <Typography variant="h6" noWrap component="div">
                 Bookkeeprz
             </Typography>
